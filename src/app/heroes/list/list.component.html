@@ -1,0 +1,34 @@
+<!-- <p>list works!</p> -->
+
+<h3>Listado de Héroes</h3>
+
+  <!-- <li class="list-group-item">Spiderman</li>
+  <li class="list-group-item">Ironman</li>
+  <li class="list-group-item">Hulk</li>
+  <li class="list-group-item">Thor</li> -->
+
+<div *ngIf="deletedHero; else nothingWasDeleted">
+  <h3>Héroes borrado <small class="text-danger"> {{ deletedHero}}</small></h3>
+</div>
+
+<!-- ng-template es un div que no existe pero se muestra en la condición anterior-->
+<ng-template #nothingWasDeleted>
+  <h3>No ha borrado nada.</h3>
+</ng-template>
+
+<button
+  *ngIf="heroNames.length > 0"
+  (click)="removeLasHero()"
+  class="btn btn-outline-danger">
+  Borrar último héroe
+</button>
+
+
+<ul class = "mt-2 list-group">
+  <li *ngFor="let name of heroNames"
+     class="list-group-item">
+     {{ name }}
+     <!-- <strong>{{ name }}</strong> -->
+    </li>
+</ul>
+
